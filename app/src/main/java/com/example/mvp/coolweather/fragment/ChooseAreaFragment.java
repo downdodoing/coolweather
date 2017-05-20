@@ -4,6 +4,7 @@ package com.example.mvp.coolweather.fragment;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.mvp.coolweather.MainActivity;
 import com.example.mvp.coolweather.MyApplication;
 import com.example.mvp.coolweather.R;
 import com.example.mvp.coolweather.activity.WeatherActivity;
@@ -68,6 +70,8 @@ public class ChooseAreaFragment extends Fragment {
         backButon = (Button) view.findViewById(R.id.back_button);
         listView = (ListView) view.findViewById(R.id.choose_area_list_view);
         adapter = new ArrayAdapter<>(LitePalApplication.getContext(), android.R.layout.simple_list_item_single_choice, dataList);
+        listView.setBackgroundColor(Color.GREEN);
+        listView.setAlpha((float) 0.5);
         listView.setAdapter(adapter);
         return view;
     }
@@ -84,12 +88,20 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
                     queryContries();
-                } else {
+                } else if (currentLevel == LEVEL_COUNTRY) {
                     String weatherId = countryList.get(position).getWeatherId();
-                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
-                    intent.putExtra("weather_id", weatherId);
-                    startActivity(intent);
-                    getActivity().finish();
+                    if (getActivity() instanceof MainActivity) {
+                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                        intent.putExtra("weather_id", weatherId);
+                        startActivity(intent);
+                        getActivity().finish();
+                    } else if (getActivity() instanceof WeatherActivity) {
+                        WeatherActivity activity = (WeatherActivity) getActivity();
+                        activity.drawer_layout.closeDrawers();
+                        activity.swipe_refresh.setRefreshing(true);
+                        activity.requestWeather(weatherId);
+                    }
+
                 }
             }
         });
