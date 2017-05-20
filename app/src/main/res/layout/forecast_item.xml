@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ll_style">
+
+    <TextView
+        android:id="@+id/date_text"
+        style="@style/forecast_item"
+        android:layout_weight="2"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/info_text"
+        style="@style/forecast_item"
+        android:layout_weight="1"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/max_text"
+        style="@style/forecast_item"
+        android:layout_weight="1"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/min_text"
+        style="@style/forecast_item"
+        android:layout_weight="1"
+        android:gravity="right" />
+</LinearLayout>

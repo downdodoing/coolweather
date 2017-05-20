@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ll_style"
+    android:background="#8000"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/view_wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="空气质量"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+    <LinearLayout style="@style/ll_style">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/aqi_text"
+                style="@style/view_wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="60"
+                android:textColor="#fff"
+                android:textSize="40sp" />
+
+            <TextView
+                style="@style/view_wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="AQI指数"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm25_text"
+                style="@style/view_wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="60"
+                android:textColor="#fff"
+                android:textSize="40sp" />
+
+            <TextView
+                style="@style/view_wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="PM2.5指数"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

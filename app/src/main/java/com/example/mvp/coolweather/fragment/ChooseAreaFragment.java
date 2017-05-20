@@ -3,6 +3,7 @@ package com.example.mvp.coolweather.fragment;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.mvp.coolweather.MyApplication;
 import com.example.mvp.coolweather.R;
+import com.example.mvp.coolweather.activity.WeatherActivity;
 import com.example.mvp.coolweather.db.City;
 import com.example.mvp.coolweather.db.Country;
 import com.example.mvp.coolweather.db.Province;
@@ -82,6 +84,12 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
                     queryContries();
+                } else {
+                    String weatherId = countryList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
